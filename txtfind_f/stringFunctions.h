@@ -16,6 +16,10 @@ int getword(char w[]);
 
 int substring(char * str1, char * str2);
 
-int similar (char *s, char *t, int n);
+void copyLessOne(char *src, char* trgt, int drop);
 
-char* copyLessOne(char *s, int drop);
+int similar(char *s, char *t, int n);
+
+void printLines(char* str);
+
+void printSimilarWords(char* str);

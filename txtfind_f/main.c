@@ -2,17 +2,20 @@
 #include "stringFunctions.h"
 
 int main(){
-  char s[WORD] = "fblga";
-  char t[WORD] = "bla";
+  char w[WORD];
+  getword(w);
+  char c;
+  scanf(" %c", &c);
 
-  //getword(s);
-  //getword(t);
-  int ans = 0;//similar(s, t, 2);
-  if(ans)
-    printf("similar\n");
+  char line[LINE];
+  getLine(line);
+  getLine(line);
+  if(c == 'a')
+    printLines(w);
+  else if (c == 'b')
+    printSimilarWords(w);
   else
-    printf("not similar\n");
+    printf("No commend found: %c\n", c);
 
-  printf("s - 0: %s\n", copyLessOne(s, 0));
   return 0;
 }
