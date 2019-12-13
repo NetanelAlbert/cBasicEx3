@@ -7,9 +7,9 @@ int main(){
   char c;
   scanf(" %c", &c);
 
-  char line[LINE];
-  getLine(line);
-  getLine(line);
+  //char line[LINE];
+  //getLine(line);
+  //getLine(line);
   if(c == 'a')
     printLines(w);
   else if (c == 'b')

@@ -24,7 +24,7 @@ int getLine(char s[]){
   char c = '0';
   while(c != '\n' && c != '\0' && i < LINE PREV){
     c = getchar();
-    *(s+(i++)) = c;
+    *(s+i++) = c;
   }
   *(s+i) = '\0';
   return i PREV;
@@ -33,17 +33,22 @@ int getLine(char s[]){
 int getword(char w[]){
   int i = 0;
   char c=' ';
-  //while(c == ' ' || c == '\t' || c == '\n' || c == '\0') c = getchar();
-  c='0';
-  while(c != ' ' && c != '\t' && c != '\n' && c != '\0' && i < WORD PREV) {
+  while(c == ' ' || c == '\t' || c == '\n' || c == '\0') {
     c = getchar();
+    if(c == "\0")
+      return PREV;
+  }
+  //c='0';
+  while(c != ' ' && c != '\t' && c != '\n' && c != '\0' && i < WORD PREV) {
+
     *(w+(i++)) = c;
+    c = getchar();
   }
   *(w+i) = '\0';
   return i PREV;
 }
 
-int substring( char* str1, char* str2){
+int substring(char* str1, char* str2){
   int str1Len = strlen(str1);
   int str2Len = strlen(str2);
   for (size_t i = 0; i < str1Len - str2Len; i++) {
@@ -96,15 +101,17 @@ int similar(char *s, char *t, int n){
 
 void printLines(char* str){
   printf("printLines: %s\n", str);
-  int lent = 0;
+  int lent = 1;
   do {
     char line[LINE];
-    lent = getLine(line);
-    if(lent > 0 && substring(line, str))
-      printf("%s\n", line);
+    lent++;
+    printf("lent: %d\n", getLine(line));
+    if(lent > 0 && substring(line, str) == true)
+      printf("%s", line);
     else
-      printf("Stop on: %s\n", line);
-  } while(lent > 0);
+      printf("NOT:   %s", line);
+  } while(lent < 8);
+  //printf("Stop on: %s\n", line);
 }
 
 void printSimilarWords(char* str){
